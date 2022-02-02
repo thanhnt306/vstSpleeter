@@ -22,26 +22,31 @@
 */
 class SpleetervstAudioProcessorEditor : public AudioProcessorEditor {
 public:
-  SpleetervstAudioProcessorEditor(SpleetervstAudioProcessor &);
-  ~SpleetervstAudioProcessorEditor();
+    SpleetervstAudioProcessorEditor(SpleetervstAudioProcessor&);
+    ~SpleetervstAudioProcessorEditor();
 
-  //==============================================================================
-  void paint(Graphics &) override;
-  void resized() override;
+    //==============================================================================
+    void paint(Graphics&) override;
+    void resized() override;
 
 private:
-  // This reference is provided as a quick way for your editor to
-  // access the processor object that created it.
-  void UpdateVolumes();
-  
-  SpleetervstAudioProcessor &processor;
-  Slider vocals_volume_slider;
-  Slider drums_volume_slider;
-  Slider bass_volume_slider;
-  Slider piano_volume_slider;
-  Slider other_volume_slider;
-  
-  std::list<std::pair<std::string, Slider*>> volume_sliders;
+    // This reference is provided as a quick way for your editor to
+    // access the processor object that created it.
+    void UpdateVolumes();
+    void setSliderEnable(Slider* slider, bool isEnable);
 
-  JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SpleetervstAudioProcessorEditor)
+    SpleetervstAudioProcessor& processor;
+    Slider vocals_volume_slider;
+    Slider drums_volume_slider;
+    Slider bass_volume_slider;
+    Slider piano_volume_slider;
+    Slider other_volume_slider;
+
+    std::list<std::pair<std::string, Slider*>> volume_sliders;
+
+    TextButton twoStemsButton;
+    TextButton fourStemsButton;
+    TextButton fiveStemsButton;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SpleetervstAudioProcessorEditor)
 };
